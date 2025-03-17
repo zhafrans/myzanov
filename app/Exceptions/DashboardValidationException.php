@@ -2,9 +2,13 @@
 
 namespace App\Exceptions;
 
-use Exception;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\ValidationException;
 
-class DashboardValidationException extends Exception
+class DashboardValidationException extends ValidationException
 {
-    //
+    public function __construct(Validator $validator)
+    {
+        $this->validator = $validator;
+    }
 }
